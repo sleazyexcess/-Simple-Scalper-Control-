@@ -1,0 +1,14 @@
+import streamlit as st
+import os
+
+st.title("Simple Scalper Control")
+
+if st.button("Stop Robot"):
+    with open("command.txt", "w") as f:
+        f.write("STOP")
+    st.write("Command sent: STOP")
+
+if st.button("Restart Robot"):
+    if os.path.exists("command.txt"):
+        os.remove("command.txt")
+    st.write("Robot ready to trade.")
